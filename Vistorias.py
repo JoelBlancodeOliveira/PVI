@@ -76,7 +76,7 @@ def gerar_pdf(dados, consideracoes, condominio, endereco, responsavel):
     y -= 1 * cm
 
     for item in dados:
-        c.drawString(2 * cm, y, f"Equipamento: {item['Equipamento']} (Tipo: {item['Tipo']})")
+        c.drawString(2 * cm, y, f"Equipamento: {item['Equipamento']}")
         y -= 0.6 * cm
         for key, val in item.items():
             if key not in ["Equipamento", "Tipo"]:
@@ -126,6 +126,6 @@ if dados_vistoria and condominio and endereco and responsavel:
     st.download_button(
         label="📥 Baixar relatório em PDF",
         data=pdf_bytes,
-        file_name=f"vistoria_{datetime.now().strftime('%Y-%m-%d_%H%M')}.pdf",
+        file_name=f"vistoria_{datetime.now().strftime('%d-%m-%Y')}.pdf",
         mime="application/pdf"
     )
